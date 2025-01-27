@@ -1,3 +1,4 @@
+import 'package:coffee_app_ui/Detail/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -30,12 +31,15 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Appbar(),
             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 10),
               child: Text(
                 "Find the best \ncoffee for you",
                 style: TextStyle(
@@ -45,38 +49,58 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 50,
-              margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-              decoration: BoxDecoration(
-                color: Color(0xFF2D2C32),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 35,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Icon(
-                      Iconsax.search_normal5,
-                      color: Colors.white.withAlpha(100),
-                    ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 20),
+                  hintText: "   Find your coffee...",
+                  hintStyle: TextStyle(
+                    color: Colors.white.withAlpha(100),
                   ),
-                  Text(
-                    "Find your coffee...",
-                    style: TextStyle(
-                      color: Colors.white.withAlpha(100),
-                      fontSize: 14,
-                    ),
+                  prefixIcon: Icon(
+                    Iconsax.search_normal5,
+                    size: 20,
+                    color: Colors.white.withAlpha(100),
                   ),
-                ],
+                  filled: true,
+                  fillColor: Color(0xFF2D2C32),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
               ),
             ),
+            // Container(
+            //   height: 50,
+            //   margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+            //   decoration: BoxDecoration(
+            //     color: Color(0xFF2D2C32),
+            //     borderRadius: BorderRadius.circular(10),
+            //   ),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     spacing: 35,
+            //     children: [
+            //       Padding(
+            //         padding: const EdgeInsets.only(left: 10),
+            //         child: Icon(
+            //           Iconsax.search_normal5,
+            //           color: Colors.white.withAlpha(100),
+            //         ),
+            //       ),
+            //       Text(
+            //         "Find your coffee...",
+            //         style: TextStyle(
+            //           color: Colors.white.withAlpha(100),
+            //           fontSize: 14,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             SizedBox(
               height: 80,
               child: ListView.builder(
@@ -119,77 +143,86 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 spacing: 10,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xFF2D2C32),
-                          Color(0xFF171419),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return DetailScreen();
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF2D2C32),
+                            Color(0xFF171419),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    width: 180,
-                    child: Column(
-                      spacing: 6,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.asset(
-                                  'assets/capp1.webp',
-                                  height: 150,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ))),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Text(
-                            "Cappuccino",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Text("with Oat Milk",
+                      width: 180,
+                      child: Column(
+                        spacing: 6,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(30),
+                                  child: Image.asset(
+                                    'assets/capp0.webp',
+                                    height: 150,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ))),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            child: Text(
+                              "Cappuccino",
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 12)),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 10, right: 10, bottom: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "\$5.00",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                width: 40,
-                                height: 40,
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              )
-                            ],
+                                  TextStyle(color: Colors.white, fontSize: 16),
+                            ),
                           ),
-                        )
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            child: Text("with Oat Milk",
+                                style: TextStyle(
+                                    color: Colors.grey, fontSize: 12)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: 10, right: 10, bottom: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "\$5.00",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.orange,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  width: 40,
+                                  height: 40,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
