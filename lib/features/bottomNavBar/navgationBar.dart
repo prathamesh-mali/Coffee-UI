@@ -1,4 +1,4 @@
-import 'package:coffee_app_ui/cart/cart_screen.dart';
+import 'package:coffee_app_ui/features/cart/cart_screen.dart';
 import 'package:coffee_app_ui/features/home/homepage.dart';
 import 'package:flutter/material.dart';
 

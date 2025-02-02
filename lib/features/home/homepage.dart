@@ -1,4 +1,4 @@
-import 'package:coffee_app_ui/Detail/details_screen.dart';
+import 'package:coffee_app_ui/features/Detail/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
