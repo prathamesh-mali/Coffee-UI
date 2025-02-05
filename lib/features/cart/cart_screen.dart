@@ -27,23 +27,6 @@ class _CartScreenState extends State<CartScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     Navigator.pop(context);
-                  //   },
-                  //   child: Container(
-                  //     width: 40,
-                  //     height: 40,
-                  //     decoration: BoxDecoration(
-                  //       color: Color.fromARGB(255, 29, 28, 46),
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //     child: Icon(
-                  //       Icons.arrow_back,
-                  //       color: Color.fromARGB(255, 149, 146, 195),
-                  //     ),
-                  //   ),
-                  // ),
                   Text(
                     'Cart',
                     textAlign: TextAlign.center,
@@ -269,7 +252,6 @@ class _CartScreenState extends State<CartScreen> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
@@ -277,7 +259,6 @@ class _CartScreenState extends State<CartScreen> {
                           style: TextStyle(
                             color: Colors.orange,
                             fontSize: 15,
-                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
@@ -291,7 +272,6 @@ class _CartScreenState extends State<CartScreen> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
@@ -299,7 +279,6 @@ class _CartScreenState extends State<CartScreen> {
                           style: TextStyle(
                             color: Colors.orange,
                             fontSize: 15,
-                            // fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],

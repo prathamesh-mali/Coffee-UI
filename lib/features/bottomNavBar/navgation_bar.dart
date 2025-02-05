@@ -14,20 +14,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    // DetailScreen(),
     CartScreen(),
-    // Container(
-    //   width: double.infinity,
-    //   height: double.infinity,
-    //   color: Color.fromARGB(255, 13, 10, 21),
-    //   child: Center(
-    //     child: Text(
-    //       'Cart',
-    //       style: TextStyle(
-    //           color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
-    //     ),
-    //   ),
-    // ),
     Container(
       width: double.infinity,
       height: double.infinity,
@@ -44,7 +31,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Update the selected index
+      _selectedIndex = index;
     });
   }
 

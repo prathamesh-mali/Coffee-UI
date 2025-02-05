@@ -1,7 +1,7 @@
 // Author: Prathamesh Mali
 // Github: https://github.com/prathamesh-mali
 
-import 'package:coffee_app_ui/features/bottomNavBar/navgationBar.dart';
+import 'package:coffee_app_ui/features/bottomNavBar/navgation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {

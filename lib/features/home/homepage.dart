@@ -72,35 +72,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // Container(
-            //   height: 50,
-            //   margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-            //   decoration: BoxDecoration(
-            //     color: Color(0xFF2D2C32),
-            //     borderRadius: BorderRadius.circular(10),
-            //   ),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     spacing: 35,
-            //     children: [
-            //       Padding(
-            //         padding: const EdgeInsets.only(left: 10),
-            //         child: Icon(
-            //           Iconsax.search_normal5,
-            //           color: Colors.white.withAlpha(100),
-            //         ),
-            //       ),
-            //       Text(
-            //         "Find your coffee...",
-            //         style: TextStyle(
-            //           color: Colors.white.withAlpha(100),
-            //           fontSize: 14,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             SizedBox(
               height: 80,
               child: ListView.builder(
