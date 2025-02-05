@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:styled_divider/styled_divider.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -52,17 +53,36 @@ class _CartScreenState extends State<CartScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   Container(
-                    width: 40,
-                    height: 40,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 29, 28, 46),
-                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.white.withAlpha(2),
+                      ),
+                      gradient: LinearGradient(colors: [
+                        Color.fromARGB(255, 58, 58, 82),
+                        Color.fromARGB(255, 26, 20, 38),
+                      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Icon(
-                      Icons.account_box,
-                      color: Color.fromARGB(255, 149, 146, 195),
+                    padding: EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withAlpha(10),
+                            blurRadius: 10,
+                            spreadRadius: 1,
+                          )
+                        ],
+                      ),
+                      child: Image.asset(
+                        'assets/profile.png',
+                        color: Colors.white,
+                        width: 30,
+                        height: 30,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -205,7 +225,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 250,
+              height: 300,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(58, 239, 181, 95),
                 border: Border(
@@ -217,6 +237,116 @@ class _CartScreenState extends State<CartScreen> {
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50),
                   topRight: Radius.circular(50),
+                ),
+              ),
+              padding: EdgeInsets.all(20),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+                child: Column(
+                  spacing: 3,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Order summary",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Order",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "\$5",
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 15,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    StyledDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Delivery",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Free",
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 15,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    StyledDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Total',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '\$5',
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: Container(
+                        width: double.infinity,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Check Out',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

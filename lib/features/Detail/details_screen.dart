@@ -11,6 +11,11 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  List<String> sizes = ["S", "M", "L"];
+  List<double> prices = [4.99, 5.99, 6.99];
+  int selectedSize = 0;
+  bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,16 +62,25 @@ class _DetailScreenState extends State<DetailScreen> {
           Positioned(
             top: 80,
             right: 20,
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 29, 28, 46),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                Icons.favorite_border_outlined,
-                color: Color.fromARGB(255, 149, 146, 195),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isFavorite = !isFavorite;
+                });
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 29, 28, 46),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(
+                  Icons.favorite_border_outlined,
+                  color: isFavorite
+                      ? Colors.orange
+                      : Color.fromARGB(255, 149, 146, 195),
+                ),
               ),
             ),
           ),
@@ -255,56 +269,44 @@ class _DetailScreenState extends State<DetailScreen> {
                     SizedBox(
                       height: 40,
                       width: double.infinity,
-                      child: ListView(
+                      child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        children: [
-                          Container(
-                              width: 110,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                border: Border.all(color: Colors.orange),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "S",
-                                  style: TextStyle(color: Colors.orange),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedSize = index;
+                              });
+                            },
+                            child: Padding(
+                              padding: index == 0
+                                  ? EdgeInsets.only(left: 5, right: 5)
+                                  : EdgeInsets.only(left: 5, right: 5),
+                              child: Container(
+                                width: 110,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    color: selectedSize == index
+                                        ? Colors.orange
+                                        : Colors.grey,
+                                  ),
                                 ),
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                              width: 110,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                border: Border.all(color: Colors.white),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "M",
-                                  style: TextStyle(color: Colors.white),
+                                child: Center(
+                                  child: Text(
+                                    sizes[index],
+                                    style: TextStyle(
+                                        color: selectedSize == index
+                                            ? Colors.orange
+                                            : Colors.grey),
+                                  ),
                                 ),
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            width: 110,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(color: Colors.white),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "L",
-                                style: TextStyle(color: Colors.white),
                               ),
                             ),
-                          )
-                        ],
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -327,7 +329,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       Text("Price",
                           style: TextStyle(color: Colors.grey, fontSize: 14)),
-                      Text("\$4.99",
+                      Text("\$ ${prices[selectedSize]}",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                     ],
                   ),

@@ -446,11 +446,34 @@ class Appbar extends StatelessWidget {
         actions: [
           Container(
             decoration: BoxDecoration(
-              color: Color(0xFF2D2C32),
-              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white.withAlpha(2),
+              ),
+              gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 58, 58, 82),
+                Color.fromARGB(255, 26, 20, 38),
+              ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+              borderRadius: BorderRadius.circular(20),
             ),
             padding: EdgeInsets.all(10),
-            child: Icon(Icons.person_off_outlined),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withAlpha(10),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  )
+                ],
+              ),
+              child: Image.asset(
+                'assets/profile.png',
+                color: Colors.white,
+                width: 30,
+                height: 30,
+                fit: BoxFit.cover,
+              ),
+            ),
           )
         ],
       ),
