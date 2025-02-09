@@ -1,5 +1,7 @@
 import 'package:coffee_app_ui/features/Detail/details_screen.dart';
+import 'package:coffee_app_ui/features/home/bloc/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,16 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> coffeeTypes = [
-    "Espresso",
-    "Cappuccino",
-    "Latte",
-    "Mocha",
-    "Macchiato",
-    "Americano",
-  ];
-
   int selectedType = 0;
+
+  late HomeCubit homeCubit;
+
+  @override
+  void initState() {
+    homeCubit = context.read<HomeCubit>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 padding: EdgeInsets.only(left: 20, top: 20),
                 scrollDirection: Axis.horizontal,
-                itemCount: coffeeTypes.length,
+                itemCount: homeCubit.coffeeTypes.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                         spacing: 5,
                         children: [
                           Text(
-                            coffeeTypes[index],
+                            homeCubit.coffeeTypes[index],
                             style: TextStyle(
                               color: selectedType == index
                                   ? Colors.orange
@@ -116,10 +117,14 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return DetailScreen();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DetailScreen();
+                          },
+                        ),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(

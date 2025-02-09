@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:coffee_app_ui/features/Detail/details_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -11,8 +13,6 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  List<String> sizes = ["S", "M", "L"];
-  List<double> prices = [4.99, 5.99, 6.99];
   int selectedSize = 0;
   bool isFavorite = false;
 
@@ -296,7 +296,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    sizes[index],
+                                    context.read<DetailsCubit>().sizes[index],
                                     style: TextStyle(
                                         color: selectedSize == index
                                             ? Colors.orange
@@ -329,7 +329,8 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       Text("Price",
                           style: TextStyle(color: Colors.grey, fontSize: 14)),
-                      Text("\$ ${prices[selectedSize]}",
+                      Text(
+                          "\$ ${context.read<DetailsCubit>().prices[selectedSize]}",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
                     ],
                   ),
